@@ -2,6 +2,8 @@ const dropZone = document.getElementById("dropZone");
 const image = document.getElementById("image");
 const preview = document.getElementById("preview");
 const list = document.getElementById("productList");
+const dropDateInput = document.getElementById("dropDate");
+const forceBtn = document.getElementById("forceBtn");
 
 dropZone.onclick = () => image.click();
 
@@ -40,7 +42,8 @@ function saveProduct() {
 
 function toggleProduct(id) {
   const p = getProducts();
-  p.find(x => x.id === id).active ^= true;
+  const item = p.find(x => x.id === id);
+  item.active = !item.active;
   saveProducts(p);
   renderList();
 }
@@ -63,14 +66,23 @@ function renderList() {
   });
 }
 
+/* DROP CONTROL */
+
 function saveDropDate() {
-  localStorage.setItem("dropDate", dropDate.value);
+  localStorage.setItem("dropDate", dropDateInput.value);
+  alert("Drop date saved");
 }
 
 function forceToggle() {
-  localStorage.setItem("forceOpen",
-    localStorage.getItem("forceOpen") !== "true"
-  );
+  const f = localStorage.getItem("forceOpen") === "true";
+  localStorage.setItem("forceOpen", !f);
+  updateForceBtn();
 }
 
+function updateForceBtn() {
+  const f = localStorage.getItem("forceOpen") === "true";
+  forceBtn.textContent = f ? "FORCE STORE: ON" : "FORCE STORE: OFF";
+}
+
+updateForceBtn();
 renderList();
