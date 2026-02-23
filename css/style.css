@@ -40,3 +40,45 @@ canvas {
   top: 0;
   left: 0;
 }
+body.admin {
+  background: black;
+  color: white;
+  font-family: Poppins, sans-serif;
+  padding: 40px;
+}
+
+.admin-card {
+  max-width: 420px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.admin-card input,
+.admin-card textarea {
+  padding: 10px;
+  background: #111;
+  border: 1px solid #333;
+  color: white;
+}
+
+#dropZone {
+  border: 2px dashed #444;
+  padding: 30px;
+  text-align: center;
+  cursor: pointer;
+}
+
+#preview {
+  max-width: 100%;
+  display: none;
+}
+
+button {
+  padding: 12px;
+  background: white;
+  color: black;
+  border: none;
+  cursor: pointer;
+}
