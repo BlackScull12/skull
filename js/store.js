@@ -1,18 +1,37 @@
-const products = JSON.parse(localStorage.getItem("products") || "[]");
 const container = document.getElementById("products");
 
-if (!products.length) {
-  container.innerHTML = "NO PRODUCTS YET";
+let products = JSON.parse(localStorage.getItem("products") || "[]");
+
+// remove broken / incomplete products
+products = products.filter(p =>
+  p &&
+  p.name &&
+  p.price &&
+  p.image &&
+  p.image.startsWith("data:image")
+);
+
+// OPTIONAL: newest last (natural order)
+products.forEach(renderProduct);
+
+// OPTIONAL: newest first
+// products.reverse().forEach(renderProduct);
+
+function renderProduct(p) {
+  const card = document.createElement("div");
+  card.className = "product-card";
+
+  card.innerHTML = `
+    <img src="${p.image}" alt="${p.name}">
+    <h3>${p.name}</h3>
+    <p class="desc">${p.desc || ""}</p>
+    <p class="price">${p.price}</p>
+    <a class="buy" href="checkout.html">BUY</a>
+  `;
+
+  container.appendChild(card);
 }
 
-products.forEach(p => {
-  container.innerHTML += `
-    <div class="card">
-      <img src="${p.image}">
-      <h3>${p.name}</h3>
-      <p>${p.desc}</p>
-      <p>${p.price}</p>
-      <a href="checkout.html">BUY</a>
-    </div>
-  `;
-});
+if (!products.length) {
+  container.innerHTML = "<p class='empty'>NO PRODUCTS AVAILABLE</p>";
+}
