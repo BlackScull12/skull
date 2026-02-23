@@ -155,3 +155,24 @@ body.store {
   color: white;
   text-decoration: none;
 }
+
+/* COUNTDOWN TIMER */
+
+.countdown {
+  text-align: center;
+  margin: 20px 0 40px;
+}
+
+.countdown p {
+  letter-spacing: 3px;
+  opacity: 0.7;
+}
+
+#time {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.hidden {
+  display: none;
+}
