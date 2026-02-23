@@ -1,10 +1,34 @@
-<h2>ADMIN DASHBOARD</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin Dashboard</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
 
-<input id="name" placeholder="Product name">
-<textarea id="desc"></textarea>
-<input id="price" placeholder="₹ / $ / € / ¥ / £ / د">
-<input type="file" id="image">
+<body class="admin">
 
-<button onclick="save()">SAVE PRODUCT</button>
+<h1>ADMIN DASHBOARD</h1>
+
+<div class="admin-card">
+
+  <input id="name" placeholder="Product name">
+
+  <textarea id="desc" placeholder="Product description"></textarea>
+
+  <input id="price" placeholder="₹ / $ / € / ¥ / £ / د">
+
+  <div id="dropZone">
+    Drag & Drop Image Here
+    <input type="file" id="image" hidden>
+  </div>
+
+  <img id="preview">
+
+  <button onclick="saveProduct()">SAVE PRODUCT</button>
+
+</div>
 
 <script src="js/admin.js"></script>
+</body>
+</html>
