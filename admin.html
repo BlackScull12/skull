@@ -12,22 +12,25 @@
 
 <div class="admin-wrapper">
 
-  <!-- ADD PRODUCT -->
   <div class="admin-card">
     <h2>Add Product</h2>
 
     <input id="name" placeholder="Product name">
-    <textarea id="desc" placeholder="Product description"></textarea>
-    <input id="price" placeholder="₹ / $ / € / ¥ / £ / د">
+    <textarea id="desc" placeholder="Description"></textarea>
+    <input id="price" placeholder="Base price (INR number only)">
 
     <div id="dropZone">Drag & Drop Image</div>
     <input type="file" id="image" hidden>
     <img id="preview">
 
     <button onclick="saveProduct()">SAVE PRODUCT</button>
+
+    <h3>Drop Control</h3>
+    <input type="datetime-local" id="dropDate">
+    <button onclick="saveDropDate()">SAVE DROP DATE</button>
+    <button onclick="forceToggle()" id="forceBtn">FORCE STORE: OFF</button>
   </div>
 
-  <!-- PRODUCT LIST -->
   <div class="admin-card">
     <h2>Products</h2>
     <div id="productList"></div>
