@@ -132,3 +132,47 @@ body.store {
   color: white;
   text-decoration: none;
 }
+.admin-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+#productList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.admin-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #111;
+  padding: 10px;
+  border: 1px solid #222;
+}
+
+.admin-item img {
+  width: 60px;
+  height: 80px;
+  object-fit: cover;
+}
+
+.admin-item h4 {
+  flex: 1;
+  font-size: 14px;
+}
+
+.toggle {
+  cursor: pointer;
+  padding: 5px 10px;
+  border: 1px solid white;
+  font-size: 12px;
+}
+
+.delete {
+  cursor: pointer;
+  color: red;
+  font-size: 18px;
+}
