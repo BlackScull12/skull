@@ -1,15 +1,9 @@
-const ADMIN_PASS = "hi123"; // change this
-const DROP_DATE = "2026-03-01T18:00:00";
+const ADMIN_PASS = "admin123";
 
 document.getElementById("adminBubble")?.addEventListener("click", () => {
-  const pass = prompt("Admin Password:");
+  const pass = prompt("Admin password:");
   if (pass === ADMIN_PASS) {
     localStorage.setItem("admin", "true");
-    window.location.href = "admin.html";
+    location.href = "admin.html";
   }
 });
-
-function isStoreOpen() {
-  if (localStorage.getItem("admin") === "true") return true;
-  return new Date() >= new Date(DROP_DATE);
-}
