@@ -1,30 +1,25 @@
-const canvas = document.getElementById("skullCanvas");
-const ctx = canvas.getContext("2d");
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+const c = document.getElementById("skullCanvas");
+const x = c.getContext("2d");
+c.width = innerWidth;
+c.height = innerHeight;
 
-let skulls = [];
+let skulls = [...Array(25)].map(() => ({
+  x: Math.random() * c.width,
+  y: Math.random() * c.height,
+  s: 20 + Math.random() * 40
+}));
 
-for (let i = 0; i < 25; i++) {
-  skulls.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    size: 30 + Math.random() * 40,
-    speed: 0.2 + Math.random()
+function loop() {
+  x.clearRect(0,0,c.width,c.height);
+  skulls.forEach(k => {
+    x.fillStyle = "rgba(255,255,255,0.06)";
+    x.beginPath();
+    x.arc(k.x,k.y,k.s,0,Math.PI*2);
+    x.fill();
+    k.y += 0.3;
+    if (k.y > c.height) k.y = -50;
   });
+  requestAnimationFrame(loop);
 }
 
-function animate() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  skulls.forEach(s => {
-    ctx.fillStyle = "rgba(255,255,255,0.08)";
-    ctx.beginPath();
-    ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
-    ctx.fill();
-    s.y += s.speed;
-    if (s.y > canvas.height) s.y = -50;
-  });
-  requestAnimationFrame(animate);
-}
-
-animate();
+loop();
