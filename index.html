@@ -9,19 +9,24 @@
 
 <body>
 
-<canvas id="skullCanvas"></canvas>
+<canvas id="bg"></canvas>
 
 <header>
   <h1>DROP // VOID</h1>
   <p>LIMITED CLOTHING DROPS</p>
 
-  <!-- REAL LINK -->
-  <a href="store.html" class="btn">ENTER STORE</a>
+  <!-- COUNTDOWN -->
+  <div id="countdown" class="hidden">
+    <span>DROP IN</span>
+    <div id="time"></div>
+  </div>
+
+  <!-- ENTER STORE -->
+  <a href="store.html" id="enterBtn" class="btn hidden">ENTER STORE</a>
 </header>
 
 <div id="adminBubble">⚙</div>
 
-<script src="skull.js"></script>
-<script src="auth.js"></script>
+<script src="landing.js"></script>
 </body>
 </html>
