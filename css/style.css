@@ -1,3 +1,5 @@
+/* GLOBAL */
+
 body {
   margin: 0;
   background: black;
@@ -11,11 +13,6 @@ canvas {
   left: 0;
 }
 
-header {
-  text-align: center;
-  margin-top: 30vh;
-}
-
 .btn {
   padding: 12px 30px;
   border: 1px solid white;
@@ -23,14 +20,21 @@ header {
   text-decoration: none;
 }
 
+/* HOME */
+
+header {
+  text-align: center;
+  margin-top: 30vh;
+}
+
 #adminBubble {
   position: fixed;
   top: 15px;
   right: 15px;
   background: #111;
-  border-radius: 50%;
   width: 45px;
   height: 45px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -50,7 +54,6 @@ body.admin {
 }
 
 .admin-card {
-  background: #000;
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -84,8 +87,8 @@ body.admin {
 
 .admin-item {
   display: flex;
-  gap: 10px;
   align-items: center;
+  gap: 10px;
   background: #111;
   padding: 10px;
 }
@@ -113,6 +116,20 @@ body.store {
   padding: 30px;
 }
 
+.countdown {
+  text-align: center;
+  margin: 20px 0 30px;
+}
+
+#time {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.hidden {
+  display: none;
+}
+
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -124,6 +141,7 @@ body.store {
   padding: 15px;
   text-align: center;
   position: relative;
+  overflow: hidden;
 }
 
 .product-card img {
@@ -154,25 +172,4 @@ body.store {
   padding: 8px 20px;
   color: white;
   text-decoration: none;
-}
-
-/* COUNTDOWN TIMER */
-
-.countdown {
-  text-align: center;
-  margin: 20px 0 40px;
-}
-
-.countdown p {
-  letter-spacing: 3px;
-  opacity: 0.7;
-}
-
-#time {
-  font-size: 32px;
-  font-weight: bold;
-}
-
-.hidden {
-  display: none;
 }
