@@ -10,22 +10,28 @@
 
 <h1>ADMIN DASHBOARD</h1>
 
-<div class="admin-card">
+<div class="admin-wrapper">
 
-  <input id="name" placeholder="Product name">
+  <!-- ADD PRODUCT -->
+  <div class="admin-card">
+    <h2>Add Product</h2>
 
-  <textarea id="desc" placeholder="Product description"></textarea>
+    <input id="name" placeholder="Product name">
+    <textarea id="desc" placeholder="Product description"></textarea>
+    <input id="price" placeholder="₹ / $ / € / ¥ / £ / د">
 
-  <input id="price" placeholder="₹ / $ / € / ¥ / £ / د">
-
-  <div id="dropZone">
-    Drag & Drop Image Here
+    <div id="dropZone">Drag & Drop Image</div>
     <input type="file" id="image" hidden>
+    <img id="preview">
+
+    <button onclick="saveProduct()">SAVE PRODUCT</button>
   </div>
 
-  <img id="preview">
-
-  <button onclick="saveProduct()">SAVE PRODUCT</button>
+  <!-- PRODUCT LIST -->
+  <div class="admin-card">
+    <h2>Products</h2>
+    <div id="productList"></div>
+  </div>
 
 </div>
 
