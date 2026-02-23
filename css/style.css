@@ -52,3 +52,68 @@ header {
   justify-content: center;
   cursor: pointer;
 }
+body {
+  margin: 0;
+  background: black;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+}
+
+canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+header {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  margin-top: 30vh;
+}
+
+.btn {
+  display: inline-block;
+  padding: 14px 40px;
+  border: 1px solid white;
+  color: white;
+  text-decoration: none;
+  margin-top: 25px;
+}
+
+.hidden {
+  display: none;
+}
+
+/* COUNTDOWN */
+#countdown {
+  margin-top: 25px;
+}
+
+#countdown span {
+  font-size: 12px;
+  letter-spacing: 3px;
+  opacity: 0.7;
+}
+
+#time {
+  font-size: 32px;
+  margin-top: 6px;
+  font-weight: bold;
+}
+
+#adminBubble {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  width: 45px;
+  height: 45px;
+  background: #111;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 5;
+}
