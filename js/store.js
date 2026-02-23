@@ -11,6 +11,31 @@ function isDropLive() {
   return new Date() >= new Date(dropDate);
 }
 
+function startCountdown() {
+  if (!dropDate || forceOpen) return;
+
+  countdownEl.classList.remove("hidden");
+
+  const timer = setInterval(() => {
+    const now = new Date();
+    const diff = new Date(dropDate) - now;
+
+    if (diff <= 0) {
+      clearInterval(timer);
+      countdownEl.classList.add("hidden");
+      render(); // drop is live, render store
+      return;
+    }
+
+    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const m = Math.floor((diff / (1000 * 60)) % 60);
+    const s = Math.floor((diff / 1000) % 60);
+
+    timeEl.textContent = `${d}D ${h}H ${m}M ${s}S`;
+  }, 1000);
+}
+
 const rates = {
   INR: { r: 1, s: "₹" },
   USD: { r: 0.012, s: "$" },
