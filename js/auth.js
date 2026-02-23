@@ -1,4 +1,4 @@
-const ADMIN_PASS = "admin123"; // change this
+const ADMIN_PASS = "hi123"; // change this
 const DROP_DATE = "2026-03-01T18:00:00";
 
 document.getElementById("adminBubble")?.addEventListener("click", () => {
