@@ -1,11 +1,14 @@
 const productsEl = document.getElementById("products");
+const countdownEl = document.getElementById("countdown");
+const timeEl = document.getElementById("time");
 
 const forceOpen = localStorage.getItem("forceOpen") === "true";
 const dropDate = localStorage.getItem("dropDate");
 
-if (!forceOpen && dropDate && new Date() < new Date(dropDate)) {
-  document.body.innerHTML = "<h1>DROP NOT LIVE</h1>";
-  throw "";
+function isDropLive() {
+  if (forceOpen) return true;
+  if (!dropDate) return true;
+  return new Date() >= new Date(dropDate);
 }
 
 const rates = {
