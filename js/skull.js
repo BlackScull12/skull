@@ -3,23 +3,23 @@ const x = c.getContext("2d");
 c.width = innerWidth;
 c.height = innerHeight;
 
-let skulls = [...Array(25)].map(() => ({
+const skulls = Array.from({ length: 25 }, () => ({
   x: Math.random() * c.width,
   y: Math.random() * c.height,
-  s: 20 + Math.random() * 40
+  r: 20 + Math.random() * 40
 }));
 
-function loop() {
+function animate() {
   x.clearRect(0,0,c.width,c.height);
-  skulls.forEach(k => {
+  skulls.forEach(s => {
     x.fillStyle = "rgba(255,255,255,0.06)";
     x.beginPath();
-    x.arc(k.x,k.y,k.s,0,Math.PI*2);
+    x.arc(s.x,s.y,s.r,0,Math.PI*2);
     x.fill();
-    k.y += 0.3;
-    if (k.y > c.height) k.y = -50;
+    s.y += 0.3;
+    if (s.y > c.height) s.y = -50;
   });
-  requestAnimationFrame(loop);
+  requestAnimationFrame(animate);
 }
 
-loop();
+animate();
