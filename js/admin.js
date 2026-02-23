@@ -1,102 +1,76 @@
 const dropZone = document.getElementById("dropZone");
-const fileInput = document.getElementById("image");
+const image = document.getElementById("image");
 const preview = document.getElementById("preview");
-const productList = document.getElementById("productList");
+const list = document.getElementById("productList");
 
-dropZone.onclick = () => fileInput.click();
+dropZone.onclick = () => image.click();
 
-dropZone.ondragover = e => {
-  e.preventDefault();
-  dropZone.style.borderColor = "white";
-};
-
-dropZone.ondragleave = () => {
-  dropZone.style.borderColor = "#444";
-};
-
-dropZone.ondrop = e => {
-  e.preventDefault();
-  fileInput.files = e.dataTransfer.files;
-  showPreview();
-};
-
-fileInput.onchange = showPreview;
-
-function showPreview() {
-  const file = fileInput.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = () => {
-    preview.src = reader.result;
+image.onchange = () => {
+  const r = new FileReader();
+  r.onload = () => {
+    preview.src = r.result;
     preview.style.display = "block";
   };
-  reader.readAsDataURL(file);
-}
+  r.readAsDataURL(image.files[0]);
+};
 
 function getProducts() {
   return JSON.parse(localStorage.getItem("products") || "[]");
 }
 
-function saveProducts(products) {
-  localStorage.setItem("products", JSON.stringify(products));
+function saveProducts(p) {
+  localStorage.setItem("products", JSON.stringify(p));
 }
 
 function saveProduct() {
-  if (!name.value || !price.value || !preview.src) {
-    alert("Fill all fields");
-    return;
-  }
-
-  const products = getProducts();
-
-  products.push({
+  const p = {
     id: Date.now(),
     name: name.value,
     desc: desc.value,
-    price: price.value,
+    price: Number(price.value),
     image: preview.src,
     active: true
-  });
+  };
 
+  const products = getProducts();
+  products.push(p);
   saveProducts(products);
   renderList();
-  alert("Product saved");
 }
 
 function toggleProduct(id) {
-  const products = getProducts();
-  const product = products.find(p => p.id === id);
-  product.active = !product.active;
-  saveProducts(products);
+  const p = getProducts();
+  p.find(x => x.id === id).active ^= true;
+  saveProducts(p);
   renderList();
 }
 
 function deleteProduct(id) {
-  if (!confirm("Delete this product?")) return;
-  const products = getProducts().filter(p => p.id !== id);
-  saveProducts(products);
+  saveProducts(getProducts().filter(p => p.id !== id));
   renderList();
 }
 
 function renderList() {
-  productList.innerHTML = "";
-  const products = getProducts();
-
-  products.forEach(p => {
-    const item = document.createElement("div");
-    item.className = "admin-item";
-
-    item.innerHTML = `
-      <img src="${p.image}">
-      <h4>${p.name}</h4>
-      <div class="toggle" onclick="toggleProduct(${p.id})">
-        ${p.active ? "ON" : "OFF"}
-      </div>
-      <div class="delete" onclick="deleteProduct(${p.id})">✕</div>
-    `;
-
-    productList.appendChild(item);
+  list.innerHTML = "";
+  getProducts().forEach(p => {
+    list.innerHTML += `
+      <div class="admin-item">
+        <img src="${p.image}">
+        <h4>${p.name}</h4>
+        <div class="toggle" onclick="toggleProduct(${p.id})">${p.active ? "ON" : "OFF"}</div>
+        <div class="delete" onclick="deleteProduct(${p.id})">✕</div>
+      </div>`;
   });
+}
+
+function saveDropDate() {
+  localStorage.setItem("dropDate", dropDate.value);
+}
+
+function forceToggle() {
+  localStorage.setItem("forceOpen",
+    localStorage.getItem("forceOpen") !== "true"
+  );
 }
 
 renderList();
