@@ -1,9 +1,9 @@
-const countdownEl = document.getElementById("countdown");
+const countdown = document.getElementById("countdown");
 const timeEl = document.getElementById("time");
 const enterBtn = document.getElementById("enterBtn");
 
-const forceOpen = localStorage.getItem("forceOpen") === "true";
 const dropDate = localStorage.getItem("dropDate");
+const forceOpen = localStorage.getItem("forceOpen") === "true";
 
 function dropLive() {
   if (forceOpen) return true;
@@ -12,16 +12,14 @@ function dropLive() {
 }
 
 function startCountdown() {
-  if (!dropDate || forceOpen) return;
+  countdown.classList.remove("hidden");
 
-  countdownEl.classList.remove("hidden");
-
-  const interval = setInterval(() => {
+  const timer = setInterval(() => {
     const diff = new Date(dropDate) - new Date();
 
     if (diff <= 0) {
-      clearInterval(interval);
-      countdownEl.classList.add("hidden");
+      clearInterval(timer);
+      countdown.classList.add("hidden");
       enterBtn.classList.remove("hidden");
       return;
     }
