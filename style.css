@@ -1,0 +1,96 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: black;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* BACKGROUND FX */
+canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* LANDING */
+header.landing {
+  position: relative;
+  z-index: 2;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 48px;
+  letter-spacing: 2px;
+}
+
+header p {
+  margin-top: 10px;
+  letter-spacing: 2px;
+  opacity: 0.8;
+}
+
+/* BUTTON */
+.btn {
+  margin-top: 30px;
+  padding: 14px 40px;
+  border: 1px solid white;
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: white;
+  color: black;
+}
+
+.hidden {
+  display: none;
+}
+
+/* COUNTDOWN */
+#countdown {
+  margin-top: 30px;
+}
+
+#countdown span {
+  font-size: 12px;
+  letter-spacing: 3px;
+  opacity: 0.6;
+}
+
+#time {
+  font-size: 30px;
+  margin-top: 6px;
+  font-weight: bold;
+}
+
+/* ADMIN BUBBLE */
+#adminBubble {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  width: 45px;
+  height: 45px;
+  background: #111;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+}
